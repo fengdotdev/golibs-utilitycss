@@ -1,5 +1,9 @@
 package golibsutilitycss
 
+func NewDeclarations() []Declaration {
+	return make([]Declaration, 0)
+}
+
 type Declaration struct {
 	property string
 	value    string

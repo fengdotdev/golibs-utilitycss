@@ -2,6 +2,7 @@ package golibsutilitycss
 
 import (
 	"os"
+	"strings"
 )
 
 func CSSCode(selector, property, value string) string {
@@ -48,6 +49,8 @@ func ReadFile(cssfile string) (string, error) {
 	return string(bs), nil
 }
 
+
+// example bg-white{background-color: var(--color-white);}  -> bg-white, background-color, white
 func GetCode(css string) (map[string]PairKV, error) {
 	// regex to get the css code
 
@@ -62,4 +65,25 @@ func GetCode(css string) (map[string]PairKV, error) {
 	}
 
 	return nil, nil
+}
+
+// example  flex flex-col items-center  -> [flex, flex-col, items-center]
+func StringToSelectors(utilityClasses string) ([]Selector, error) {
+
+	utilityClasses = strings.TrimSpace(utilityClasses)
+	if utilityClasses == "" {
+		// Return an empty slice if the input is empty.
+		return []Selector{}, nil
+	}
+
+	// Use strings.Fields to split by any whitespace.
+	parts := strings.Fields(utilityClasses)
+
+	// Create a slice of selectors with the same length as the parts.
+	selectors := make([]Selector, len(parts))
+	for i, part := range parts {
+		selectors[i] = Selector(part)
+	}
+
+	return selectors, nil
 }
