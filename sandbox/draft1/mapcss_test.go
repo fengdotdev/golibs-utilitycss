@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/fengdotdev/golibs-testing/assert"
-	utilitycss "github.com/fengdotdev/golibs-utilitycss"
+	utilitycss "github.com/fengdotdev/golibs-utilitycss/sandbox/draft1"
 )
 
 func TestMapCssInterface(t *testing.T) {
@@ -64,7 +64,7 @@ func TestMapCssAddOverride(t *testing.T) {
 	var mycss utilitycss.MapCSSInterface = utilitycss.NewMapCSS()
 
 
-	class:= "bg-red-500 text-white lg"
+	//class:= "bg-red-500 text-white lg"
 
 	selector := utilitycss.NewSelector("body")
 	declaration := utilitycss.NewDeclaration("background-color", "red")
