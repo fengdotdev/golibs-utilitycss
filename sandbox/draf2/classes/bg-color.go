@@ -14,7 +14,8 @@ type Utility = containers.Utility
 func NewUtility(class string, css string) Utility {
 
 	classObj := goclass.NewClass(class)
-	cssObj := gocss.NewCss(css)
+	block := NewSelectorBlock(class, css)
+	cssObj := gocss.NewCss(block)
 
 	return goutility.NewUtility(cssObj, classObj)
 }
@@ -27,13 +28,11 @@ func NewSelectorBlock(selector string, css string) string {
 func Bg_white() Utility {
 	css := "background-color: #ffffff;"
 	class := "bg-white"
-	block := NewSelectorBlock(class, css)
-	return NewUtility(class, block)
+	return NewUtility(class, css)
 }
 
 func Bg_black() Utility {
 	css := "background-color: #000000;"
 	class := "bg-black"
-	block := NewSelectorBlock(class, css)
-	return NewUtility(class, block)
+	return NewUtility(class, css)
 }

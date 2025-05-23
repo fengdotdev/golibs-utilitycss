@@ -11,7 +11,7 @@ func main() {
 
 	renderer := gorenderercss.NewRendererCSS()
 
-	var _ = renderer.Mix(Bg_white, Bg_black, "bg-white", "bg-black")
+	//var _ = renderer.Mix(Bg_white, Bg_black, "bg-white", "bg-black")
 
 	class := renderer.Utils(Bg_white, Bg_black)
 
