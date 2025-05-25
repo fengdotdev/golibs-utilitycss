@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	. "github.com/fengdotdev/golibs-utilitycss/sandbox/draf2/classes"
-	"github.com/fengdotdev/golibs-utilitycss/sandbox/draf2/gocsswriter"
 	"github.com/fengdotdev/golibs-utilitycss/sandbox/draf2/gorenderercss"
+	"github.com/fengdotdev/golibs-utilitycss/sandbox/draf2/helpers"
 )
 
 var htmlContent = `
@@ -28,11 +28,16 @@ var htmlContent = `
 	`
 
 func main() {
+	url := "https://preline.co/examples.html"
+	htmlremote, err := helpers.FetchHTML(url)
 
-	list := gocsswriter.Parser(htmlContent)
-	gocsswriter.ForEach(list, func(class string) {
-
-		fmt.Println("found XD class: ", class)
+	if err != nil {
+		panic(err)
+	}
+	set, err := helpers.Parser(htmlremote)
+	helpers.ForEach(set, func(class string) {
+		s := fmt.Sprintf("at %s class: %s", url, class)
+		fmt.Println(s)
 	})
 
 }
