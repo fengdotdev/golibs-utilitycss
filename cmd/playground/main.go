@@ -4,11 +4,40 @@ import (
 	"fmt"
 
 	. "github.com/fengdotdev/golibs-utilitycss/sandbox/draf2/classes"
+	"github.com/fengdotdev/golibs-utilitycss/sandbox/draf2/gocsswriter"
 	"github.com/fengdotdev/golibs-utilitycss/sandbox/draf2/gorenderercss"
 )
 
+var htmlContent = `
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Ejemplo</title>
+	</head>
+	<body>
+		<div class="header main-class"></div>
+		<p class="content-text"></p>
+		<span id="item" class='some-item another-class'></span>
+		<a href="#" class="link"></a>
+		<div class="footer"></div>
+		<div>Sin clase</div>
+		<img src="image.png" class="image-style" alt="Una imagen">
+		<input type="text" value="algo" class ="input-field" />
+	</body>
+	</html>
+	`
+
 func main() {
 
+	list := gocsswriter.Parser(htmlContent)
+	gocsswriter.ForEach(list, func(class string) {
+
+		fmt.Println("found XD class: ", class)
+	})
+
+}
+
+func Ex1() {
 	renderer := gorenderercss.NewRendererCSS()
 
 	//var _ = renderer.Mix(Bg_white, Bg_black, "bg-white", "bg-black")

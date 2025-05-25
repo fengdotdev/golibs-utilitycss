@@ -93,7 +93,7 @@ func (p *PageRender) BuildTOFiles(path string) error {
 func (p *PageRender) ToDTO() (PageDTO, error) {
 	dto := PageDTO{
 		Title:  p.title,
-		Body:   p.body,
+		Body:   "", // TODO
 		RefCSS: p.css,
 	}
 	return dto, nil

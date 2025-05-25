@@ -6,3 +6,5 @@ github.com/fengdotdev/golibs-traits v0.2.1 h1:t/xnNRCYI0v+MrvFqUL3jnhfQFUGSGE1Gz
 github.com/fengdotdev/golibs-traits v0.2.1/go.mod h1:Ky0MxYNvKRxrcm5PMJNXGtr5Hs/S9xpTpiNTBEbwMiI=
 github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
 github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+golang.org/x/net v0.40.0 h1:79Xs7wF06Gbdcg4kdCCIQArK11Z1hr5POQ6+fIYHNuY=
+golang.org/x/net v0.40.0/go.mod h1:y0hY0exeL2Pku80/zKK7tpntoX23cqL3Oa6njdgRtds=

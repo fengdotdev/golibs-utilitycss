@@ -1,6 +1,5 @@
 package gocsswriter
 
-import "net/http"
 
 // GenerateCssFromString generate css from a html string
 // given a html with utility classes generate the css
@@ -14,6 +13,6 @@ func GenerateCssFromFile(sourcePath string, destPath string) error {
 	return nil
 }
 
-func fo(w http.ResponseWriter, r *http.Request)
+
 
 type CSSWriter struct{}
