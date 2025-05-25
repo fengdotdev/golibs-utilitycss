@@ -63,6 +63,7 @@ fix:
 get:
 	go get $(TRAITS)@latest
 	go get $(TESTING)@latest
+	go get $(FUNCS)@latest
 
 # update the version of the project
 tag:
