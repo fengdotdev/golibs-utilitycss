@@ -8,6 +8,9 @@ import (
 var _ trait.DataTransferObject[TextDTO] = (*TextComponent)(nil)
 var _ Component = (*TextComponent)(nil)
 
+
+// Text creates a new TextComponent with the given text, class, and optional id.
+// If no id is provided, a unique id will be generated.
 func Text(text string, class string, id ...string) Component {
 	s, haveId := helpers.GetFirstString(id)
 	haveClass := len(class) > 0
@@ -29,12 +32,16 @@ var txt = `
 </div>
 `
 
+
+// TextDTO is the data transfer object for TextComponent.
 type TextDTO struct {
 	Id      string
 	Class   string
 	Content string
 }
 
+
+// TextComponent is a component that represents a text element.
 type TextComponent struct {
 	id           string
 	content      string

@@ -20,13 +20,17 @@ var pageTemplate = `
 </body>
 </html>
 `
-
+// PageDTO is the data transfer object for PageRender.
 type PageDTO struct {
 	Title  string
 	Body   string
 	RefCSS string
 }
 
+
+
+// Page creates a new PageRender with the given title and children components.
+// If no children are provided, an empty page will be created.
 func Page(title string, children ...Component) PageRender {
 
 	return PageRender{
@@ -35,6 +39,9 @@ func Page(title string, children ...Component) PageRender {
 	}
 }
 
+
+
+// PageRender is a component that represents a complete HTML page.
 type PageRender struct {
 	title           string
 	html            string // need build
@@ -46,6 +53,7 @@ type PageRender struct {
 	built           bool
 }
 
+// Build builds the page by rendering the HTML and CSS.
 func (p *PageRender) Build() error {
 	if p.built {
 		return errors.New("page already built")
@@ -66,6 +74,7 @@ func (p *PageRender) Build() error {
 	return nil
 }
 
+// returns the rendered HTML of the page
 func (p *PageRender) BuildToString() string {
 	if !p.built {
 		p.Build()
@@ -73,6 +82,8 @@ func (p *PageRender) BuildToString() string {
 	return p.html
 }
 
+
+// BuildToWriter writes the rendered HTML of the page to the given io.Writer.
 func (p *PageRender) BuildToWriter(wr io.Writer) error {
 	if !p.built {
 		p.Build()
@@ -81,6 +92,8 @@ func (p *PageRender) BuildToWriter(wr io.Writer) error {
 	return err
 }
 
+
+// BuildToSingleFile builds the page to a single file, including both HTML and CSS.
 func (p *PageRender) BuildToSingleFile(path string) error {
 	panic("unimplemented")
 }
@@ -90,6 +103,7 @@ func (p *PageRender) BuildTOFiles(path string) error {
 	panic("unimplemented")
 }
 
+// FromDTO implements trait.DataTransferObject.
 func (p *PageRender) ToDTO() (PageDTO, error) {
 	dto := PageDTO{
 		Title:  p.title,

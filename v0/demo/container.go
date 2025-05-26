@@ -12,12 +12,15 @@ var _ Component = (*ContainerComponent)(nil)
 
 var _ trait.DataTransferObject[ContainerDTO] = (*ContainerComponent)(nil)
 
+// ContainerDTO is the data transfer object for ContainerComponent.
 type ContainerDTO struct {
 	Id      string
 	Class   string
 	Content string // every children must be render to string for content
 }
 
+// Container creates a new ContainerComponent with the given children, class, and optional id.
+// If no id is provided, a unique id will be generated.
 func Container(children []Component, class string, id ...string) Component {
 
 	s, haveId := helpers.GetFirstString(id)
@@ -37,6 +40,7 @@ func Container(children []Component, class string, id ...string) Component {
 
 }
 
+// ContainerComponent is a component that can contain other components.
 type ContainerComponent struct {
 	id           string
 	class        string
@@ -67,6 +71,7 @@ func (c *ContainerComponent) ToDTO() (ContainerDTO, error) {
 	return dto, nil
 }
 
+// renderedChildren renders the children of the container component to a string. 
 func (c *ContainerComponent) renderedChildren() (string, error) {
 	if c.haveChildren {
 

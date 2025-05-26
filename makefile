@@ -75,4 +75,6 @@ test:
 	go test -count=1 -v ./...
 
 
-
+ex_with_text:
+	 
+	 go run examples/withtext/main.go
